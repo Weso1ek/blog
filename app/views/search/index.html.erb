@@ -1,0 +1,11 @@
+<h1>Search#index</h1>
+
+<% @results.each do |item| %>
+  <div class="search-item">
+    <h3><%= item.title %></h3>
+    <p><%= item.description %></p>
+  </div>
+<% end %>
+
+<%= will_paginate @results %>
+

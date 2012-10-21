@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <div class="logo_image"></div>
+              <a class="brand" href="#">
+                Project name
+              </a>
+              <form method="get" class="navbar-search pull-left" action="<%= search_index_path %>">
+                <input type="text" class="search-query" name="query" placeholder="Search">
+                <input type="submit" value="Hit me" class="btn btn-primary"/>
+              </form>
+              <ul class="nav pull-right">
+                <li class="dropdown" id="fat-menu">
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown 3 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">    
+                    <li>  
+                      <form class="well form-inline">
+                        <input type="text" class="input-small" placeholder="Email">
+                        <input type="password" class="input-small" placeholder="Password">
+                        <label class="checkbox">
+                          <input type="checkbox"> Remember me
+                        </label>
+                        <button type="submit" class="btn">Sign in</button>
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <script type="text/javascript">
+                $('.dropdown-toggle').dropdown();
+              </script>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+   <div class="container">
+    <div class="row">
+      <div class="span8">
+        <%= yield %> 
+      </div>
+      <div class="span4 bg_grey">
+        <ul>
+          <% categories.each do |category| %>
+            <li><%= link_to category.name, category_path(category) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>
